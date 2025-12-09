@@ -4,50 +4,70 @@ def evaluation_page():
     st.title("Application Evaluation")
 
     st.write(
-        "Choose the type of evaluation form you want to complete. "
-        "You can either fill out the KoboToolbox form or the Google Form."
+        "Please choose which evaluation form you want to fill out. "
+        "You can select either the KoboToolbox form or the Google Form."
     )
 
-    # User chooses between KoboToolbox or Google Form
     choice = st.radio(
-        "Select a form to complete:",
+        "Select a form to open:",
         ("KoboToolbox Form", "Google Form")
     )
 
-    # --- KOBO TOOLBOX FORM FIRST ---
+    # KOBO FORM OPTION
     if choice == "KoboToolbox Form":
         st.subheader("KoboToolbox Evaluation Form")
 
-        st.write("Please complete the form below:")
+        st.info(
+            "KoboToolbox does not allow embedded viewing inside Streamlit. "
+            "Click the button below to open the form in a new tab."
+        )
+
+        kobo_url = "https://ee.kobotoolbox.org/x/kdYYIz9t"
 
         st.markdown(
-            """
-            <iframe 
-                src="https://ee.kobotoolbox.org/x/kdYYIz9t"
-                width="100%" 
-                height="900" 
-                frameborder="0">
-            </iframe>
+            f"""
+            <a href="{kobo_url}" target="_blank">
+                <button style="
+                    padding:12px 25px;
+                    background-color:#4CAF50;
+                    color:white;
+                    border:none;
+                    border-radius:5px;
+                    font-size:16px;
+                    cursor:pointer;">
+                    Open Kobo Form
+                </button>
+            </a>
             """,
             unsafe_allow_html=True
         )
 
-    # --- GOOGLE FORM SECOND ---
+    
+    #  GOOGLE FORM OPTION
+    
     else:
-        st.subheader("Google Evaluation Form")
+        st.subheader("Google Form Evaluation")
 
-        st.write("Please complete the Google Form below:")
+        google_form_url = "YOUR_GOOGLE_FORM_LINK_HERE"
+
+        st.info(
+            "Click the button below to open the Google Form in a new tab."
+        )
 
         st.markdown(
-            """
-            <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSc3mzq2HMA4vPRENbNSGkAL-uHSbqgzJkw_sLtiv7CWDeAOMg/viewform"
-                width="100%" 
-                height="900" 
-                frameborder="0" 
-                marginheight="0" 
-                marginwidth="0">
-            </iframe>
+            f"""
+            <a href="{google_form_url}" target="_blank">
+                <button style="
+                    padding:12px 25px;
+                    background-color:#2196F3;
+                    color:white;
+                    border:none;
+                    border-radius:5px;
+                    font-size:16px;
+                    cursor:pointer;">
+                    Open Google Form
+                </button>
+            </a>
             """,
             unsafe_allow_html=True
         )
